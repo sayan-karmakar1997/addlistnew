@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<style>
+    #master_container{
+        margin-left: 500px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+<div id = "master_container">
+    <div id="container0" class="container">
+        <input id="input_box">
+		<button onclick="add()">+</button>
+		<button style="display: none;" id="removeButton" onclick="remove(0)">-</button>
+    </div>
+</div>
+<script>
+    var num=0
+    var count=1
+    var state=false
+    function add(){
+        num++
+        var div1= document.createElement(div)
+        div1.id = "container"+num
+        div1.className = "container";
+        div1.innerHTML=
+            ` <input id="input_box">
+		        <button onclick="add()">+</button>
+                <button onclick="remove(${num})" id="removeButton">-</button>`
+        document.getElementById("master_container").appendChild(div1)
+        count=count+1
+        check_count()
+    }
+    function remove(name){
+        var id="container"+num
+		var element = document.getElementById(id)
+		var parentElement = document.getElementById("master_container")
+		parentElement.removeChild(element)
+        count = count-1
+        check_count()
+    }
+    function check_count(){
+        if(count==1){
+            state=false
+        }else{
+            state=true
+        }
+    }
+</script>
+</body>
+</html>
